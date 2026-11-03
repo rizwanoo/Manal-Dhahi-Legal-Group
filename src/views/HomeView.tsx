@@ -11,6 +11,7 @@ import {
   TESTIMONIALS
 } from '../data/firmData';
 import { AnimatedHeading } from '../components/AnimatedHeading';
+import { AnimatedCounter } from '../components/AnimatedCounter';
 import { CardStack } from '../components/CardStack';
 import { AOS, AOSItem } from '../components/AOS';
 import {
@@ -159,7 +160,9 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 className="pt-8 border-t border-white/20 grid grid-cols-2 sm:grid-cols-3 gap-6"
               >
                 <div>
-                  <div className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">15+</div>
+                  <div className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+                    <AnimatedCounter value="15+" />
+                  </div>
                   <div className="text-xs text-[#CBD5E1] mt-1 font-light tracking-wide">{t('Years in Bahrain', 'عاماً في مملكة البحرين')}</div>
                 </div>
                 <div>
@@ -282,7 +285,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 className={`pt-6 sm:pt-0 ${i !== 0 ? 'sm:px-8' : 'sm:pe-8'} text-start`}
               >
                 <div className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#581D2D] tracking-tight">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} />
                 </div>
                 <div className="text-xs sm:text-sm font-medium text-[#4A525D] mt-2.5 leading-snug">
                   {language === 'ar' ? stat.labelAr : stat.labelEn}
