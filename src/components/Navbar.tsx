@@ -121,6 +121,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Scroll listener for sticky navbar styling
   useEffect(() => {
@@ -131,10 +132,52 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Cleanup hover timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Robust Mouse Enter handler with timeout cancellation
+  const handleDropdownMouseEnter = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setServicesDropdownOpen(true);
+  };
+
+  // Graceful Mouse Leave handler with 200ms bridge window
+  const handleDropdownMouseLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+    hoverTimeoutRef.current = setTimeout(() => {
+      setServicesDropdownOpen(false);
+    }, 200);
+  };
+
+  // Toggle dropdown on click (ideal for touch & click)
+  const handleDropdownToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setServicesDropdownOpen((prev) => !prev);
+  };
+
   // Click outside listener for desktop dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        if (hoverTimeoutRef.current) {
+          clearTimeout(hoverTimeoutRef.current);
+          hoverTimeoutRef.current = null;
+        }
         setServicesDropdownOpen(false);
       }
     };
@@ -146,6 +189,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        if (hoverTimeoutRef.current) {
+          clearTimeout(hoverTimeoutRef.current);
+          hoverTimeoutRef.current = null;
+        }
         setServicesDropdownOpen(false);
         setMobileMenuOpen(false);
       }
@@ -167,6 +214,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
   }, [mobileMenuOpen]);
 
   const handleNavClick = (id: string, param?: string) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
     onNavigate(id, param);
     setServicesDropdownOpen(false);
     setMobileMenuOpen(false);
@@ -232,15 +283,12 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                     key={item.id}
                     ref={dropdownRef}
                     className="relative shrink-0 overflow-visible"
-                    onMouseEnter={() => setServicesDropdownOpen(true)}
-                    onMouseLeave={() => setServicesDropdownOpen(false)}
+                    onMouseEnter={handleDropdownMouseEnter}
+                    onMouseLeave={handleDropdownMouseLeave}
                   >
                     <button
                       type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setServicesDropdownOpen((prev) => !prev);
-                      }}
+                      onClick={handleDropdownToggle}
                       aria-expanded={servicesDropdownOpen}
                       aria-haspopup="true"
                       className={`whitespace-nowrap px-2.5 py-1.5 text-xs xl:text-[13px] 2xl:text-sm font-medium tracking-wide uppercase transition-all flex items-center gap-1.5 cursor-pointer relative border-0 bg-transparent shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] rounded ${
@@ -260,18 +308,21 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                       )}
                     </button>
 
-                    {/* Desktop Dropdown Card */}
+                    {/* Desktop Dropdown Card with Zero-Gap Hit Box */}
                     {servicesDropdownOpen && (
                       <div
                         role="menu"
-                        className="absolute top-full start-0 mt-2 w-88 sm:w-[420px] bg-[#0E121A]/98 backdrop-blur-2xl border border-[#D4AF37]/35 shadow-[0_20px_50px_rgba(0,0,0,0.8)] p-2.5 rounded-2xl text-start z-[100] animate-in fade-in slide-in-from-top-2 duration-200"
+                        onMouseEnter={handleDropdownMouseEnter}
+                        onMouseLeave={handleDropdownMouseLeave}
+                        className="absolute top-full start-0 pt-2 w-88 sm:w-[420px] text-start z-[100] animate-in fade-in slide-in-from-top-1 duration-150"
                       >
-                        <div className="text-[10px] uppercase font-bold tracking-[0.18em] text-[#D4AF37] px-3 py-2 border-b border-white/10 flex items-center justify-between">
-                          <span>{t('Practices & Sub-Services', 'التخصصات والخدمات المعتمدة')}</span>
-                          <span className="text-[9px] font-mono text-[#A0AAB5] bg-white/5 px-2 py-0.5 rounded">
-                            BAHRAIN • GCC
-                          </span>
-                        </div>
+                        <div className="bg-[#0E121A]/98 backdrop-blur-2xl border border-[#D4AF37]/35 shadow-[0_20px_50px_rgba(0,0,0,0.8)] p-2.5 rounded-2xl relative">
+                          <div className="text-[10px] uppercase font-bold tracking-[0.18em] text-[#D4AF37] px-3 py-2 border-b border-white/10 flex items-center justify-between">
+                            <span>{t('Practices & Sub-Services', 'التخصصات والخدمات المعتمدة')}</span>
+                            <span className="text-[9px] font-mono text-[#A0AAB5] bg-white/5 px-2 py-0.5 rounded">
+                              BAHRAIN • GCC
+                            </span>
+                          </div>
 
                         <div className="space-y-1 mt-2">
                           {item.subItems?.map((sub) => {
@@ -315,9 +366,10 @@ export const Navbar: React.FC<NavbarProps> = ({ currentView, onNavigate }) => {
                           </button>
                         </div>
                       </div>
-                    )}
-                  </div>
-                );
+                    </div>
+                  )}
+                </div>
+              );
               }
 
               return (
