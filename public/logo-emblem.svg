@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" fill="none" width="100%" height="100%">
+  <defs>
+    <!-- Royal Champagne Gold Linear Gradient -->
+    <linearGradient id="mdGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2BF" />
+      <stop offset="25%" stop-color="#E8C868" />
+      <stop offset="60%" stop-color="#D4AF37" />
+      <stop offset="85%" stop-color="#B88A28" />
+      <stop offset="100%" stop-color="#8C651A" />
+    </linearGradient>
+
+    <!-- Subtle Metallic Light Highlight -->
+    <linearGradient id="mdHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#FFF2BF" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#9A721C" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Deep Warm Shadow -->
+    <filter id="mdGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3.5" flood-color="#000000" flood-opacity="0.65" />
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#D4AF37" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- The Official Manal Dhahi Legal Group Monogram Crest -->
+  <g filter="url(#mdGlow)">
+    <!-- Right Vertical Judicial Pillar (Sword / Foundation of Law) -->
+    <path 
+      d="M 76 10 L 88 10 L 88 128 L 76 128 Z" 
+      fill="url(#mdGoldGrad)" 
+    />
+    <path 
+      d="M 76 10 L 80 10 L 80 128 L 76 128 Z" 
+      fill="url(#mdHighlight)" 
+      opacity="0.45"
+    />
+
+    <!-- Left Angular Monogram 'M' & 'D' / Justice Scales Architecture -->
+    <!-- Upper Diagonal Wing & Column -->
+    <path 
+      d="M 76 10 L 88 10 L 32 46 L 16 36 Z" 
+      fill="url(#mdGoldGrad)" 
+    />
+    <path 
+      d="M 16 36 L 32 46 L 32 94 L 16 84 Z" 
+      fill="url(#mdGoldGrad)" 
+    />
+    
+    <!-- Central Intersecting Transom Bar (Binding Law & Authority) -->
+    <path 
+      d="M 16 62 L 88 62 L 88 74 L 16 74 Z" 
+      fill="url(#mdGoldGrad)" 
+    />
+    <path 
+      d="M 16 62 L 88 62 L 88 65 L 16 65 Z" 
+      fill="#FFF8D6" 
+      opacity="0.75"
+    />
+
+    <!-- Lower Triangular Taper / Base Keystone -->
+    <path 
+      d="M 16 84 L 32 94 L 76 122 L 68 132 L 16 84 Z" 
+      fill="url(#mdGoldGrad)" 
+    />
+
+    <!-- Geometric Scale Weight / Anchor Finial at Base -->
+    <polygon 
+      points="76,128 88,128 82,136" 
+      fill="url(#mdGoldGrad)" 
+    />
+    <!-- Top Crown Finial -->
+    <polygon 
+      points="76,10 88,10 82,3" 
+      fill="url(#mdGoldGrad)" 
+    />
+
+    <!-- Inner Core Scales of Justice Balance Line -->
+    <circle cx="52" cy="68" r="4" fill="#FFF8D6" />
+  </g>
+</svg>

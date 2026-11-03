@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-ivory: #FAF8F5;
+    --color-cream: #F5EFE6;
+    --color-sand: #E8DFD3;
+    --color-gold: #B38F4D;
+    --color-gold-light: #CBB079;
+    --color-gold-dark: #8E6F34;
+    --color-burgundy: #581D2D;
+    --color-burgundy-light: #77293E;
+    --color-burgundy-dark: #3F121F;
+    --color-forest: #1F382E;
+    --color-forest-dark: #14241E;
+    --color-ink: #1C2024;
+    --color-charcoal: #333940;
+    --color-muted: #6B7280;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  html[dir="rtl"] {
+    font-family: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  }
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', Georgia, serif;
+}
+
+.font-sans-modern {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+.font-arabic-calligraphy {
+  font-family: 'IBM Plex Sans Arabic', 'Traditional Arabic', sans-serif;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CFC3;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B38F4D;
+}
+
+/* Glassmorphism accents */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 226, 217, 0.8);
+}
+
+.glass-panel-dark {
+  background: rgba(31, 56, 46, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(179, 143, 77, 0.3);
+}
+
+.glass-panel-burgundy {
+  background: rgba(88, 29, 45, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(179, 143, 77, 0.3);
+}
+
+/* Soft gold glow */
+.gold-glow {
+  box-shadow: 0 10px 30px -10px rgba(179, 143, 77, 0.25);
+}
+
+.editorial-shadow {
+  box-shadow: 0 20px 40px -15px rgba(28, 32, 36, 0.07);
+}

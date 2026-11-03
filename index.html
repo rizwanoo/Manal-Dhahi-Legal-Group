@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <title>Manal Dhahi Legal Group | Leading Law Firm & Lawyers in Bahrain</title>
+    <meta name="description" content="Official website of Manal Dhahi Legal Group. Premier law firm and legal consultancy in Manama, Kingdom of Bahrain specializing in litigation, corporate advisory, private notary, mediation, and cross-border GCC expansion." />
+    <meta property="og:title" content="Manal Dhahi Legal Group | Leading Law Firm & Lawyers in Bahrain" />
+    <meta property="og:description" content="Official website of Manal Dhahi Legal Group. Premier law firm and legal consultancy in Manama, Kingdom of Bahrain specializing in litigation, corporate advisory, private notary, mediation, and cross-border GCC expansion." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/manal-founder.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Manal Dhahi Legal Group | Leading Law Firm & Lawyers in Bahrain" />
+    <meta name="twitter:description" content="Official website of Manal Dhahi Legal Group. Premier law firm and legal consultancy in Manama, Kingdom of Bahrain." />
+    <meta name="twitter:image" content="/assets/manal-founder.webp" />
+    <!-- Editorial & Luxury Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Browser Extension Shield -->
+    <script>
+      window.addEventListener('error', function (e) {
+        if (
+          (e.filename && (e.filename.includes('chrome-extension://') || e.filename.includes('inpage.js'))) ||
+          (e.message && (e.message.includes('MetaMask') || e.message.includes('ethereum')))
+        ) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function (e) {
+        var reason = e.reason;
+        var msg = (typeof reason === 'string' ? reason : (reason && reason.message) || '') + '';
+        var stack = (reason && reason.stack) || '';
+        if (
+          msg.includes('MetaMask') ||
+          msg.includes('ethereum') ||
+          stack.includes('chrome-extension://') ||
+          stack.includes('inpage.js')
+        ) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+        }
+      }, true);
+    </script>
+  </head>
+  <body class="bg-[#FAF8F5] text-[#1E232A] antialiased selection:bg-[#B38F4D]/20 selection:text-[#5B1E31]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
