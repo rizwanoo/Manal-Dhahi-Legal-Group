@@ -2,5 +2,5 @@
   "name": "Manal Dhahi Legal Group | Law Firm in Bahrain",
   "description": "Official website of Manal Dhahi Legal Group. Premier law firm and legal consultancy in Manama, Kingdom of Bahrain specializing in litigation, corporate advisory, private notary, mediation, and cross-border GCC expansion.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }
