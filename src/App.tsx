@@ -69,7 +69,10 @@ function AppContent() {
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#1C2024] antialiased selection:bg-[#B38F4D]/20 selection:text-[#581D2D]">
       {/* Top Navigation */}
-      <Navbar currentView={currentView} onNavigate={navigateTo} />
+      <Navbar
+        currentView={currentView}
+        onNavigate={navigateTo}
+      />
 
       {/* Main View Router */}
       <main className="flex-1">
